@@ -18,12 +18,37 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        //\App\Models\User::factory(10)->create();
 
-        
-       // \App\Models\Product::factory(5)->create();
 
-      \App\Models\Category::factory(5)->create();
-        
+        $var = \App\Models\Category::factory()->create([
+            'name' => 'Bio'
+        ]);
+
+        \App\Models\Product::factory(5)->create([
+
+            'category_id' => $var->id
+        ]);
+
+
+        $type = \App\Models\Category::factory()->create([
+
+            'name' => 'Sold'
+        ]);
+
+        \App\Models\Product::factory(9)->create([
+
+            'category_id' => $type->id
+        ]);
+
+        $alpha = \App\Models\Category::factory()->create([
+
+            'name' => 'saison'
+        ]);
+
+        \App\Models\Product::factory(15)->create([
+
+            'category_id' => $alpha
+        ]);
     }
 }

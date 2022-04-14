@@ -9,9 +9,25 @@ class Product extends Model
 {
 
     use HasFactory;
+
     protected $fillable = [
         'nom', 'description', 'prix', 'slug', 'coup_de_coeur', 'image', 'cateory_id', 'promotion'
     ];
+
+
+    public function scopeFilter($query)
+
+    {
+        if(request("search")) {
+
+            $query 
+            ->where('description', 'like', '%' . request("search") . '%')
+
+            ->orwhere('nom', 'like', '%' . request("search") . '%')
+            ->orwhere('prix', 'like', '%' . request("search") . '%')->get(); 
+        }
+    }
+
 
     public function Category() 
 
