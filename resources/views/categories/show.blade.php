@@ -16,7 +16,7 @@
         <div class="col">
             <div class="row row-cols-2 row-cols-lg-3 g-2 g-lg-3">
 
-                @foreach ($category->products as $produit)
+                @foreach ($produits as $produit)
                     <div class="card">
                         <a class="card-img-top">
                             <img src="{{ $produit->image }}" class="img-fluid" alt=" Card image cap">

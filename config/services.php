@@ -34,8 +34,7 @@ return [
         'name'  => env('NAME_COMPANY', 'FLASH PROMO'),
         'mail'  => env('MAIL_FROM_ADDRESS'),
         'phone' => env('PHONE_NUMBER', '+33 74 25 36 22 23'), 
-        'fax'   => env('FAXE_NUMBER', '+33 12 14 15 16'),
-
+        'fax'   => env('FAXE_NUMBER', '+33 12 14 15 16'), 
     ], 
 
     'Adresse' => [

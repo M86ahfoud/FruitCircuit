@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('coup_de_coeur')->nullable();
             $table->string('image')->nullable();
             $table->foreignId('category_id')->nullable();
+            $table->foreignId('user_id')->nullable();
             $table->integer('promotion');
             $table->timestamps();
         });

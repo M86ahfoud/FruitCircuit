@@ -1,6 +1,15 @@
 <?php
+
+use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Models\comment;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -17,13 +26,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index', [
-        "produits" => Product::inRandomOrder()->limit(3)->get(),
-        "FavriProduit" => Product::where('coup_de_coeur', 1)->inRandomOrder()->first(),
-        "parabol" => Product::latest()->limit(4)->get(),
-        //"meilleur" => Review::inRandomOrder(4),
+        "produits" => Product::inRandomOrder()->filter()->limit(3)->get(),
+        "FavriProduit" => Product::where('coup_de_coeur', 1)->inRandomOrder()->filter()->first(),
+        "parabol" => Product::latest()->filter()->limit(4)->get(),
+        "bestProducts" => Product::withAvg('comments', 'note')->limit(4)->get()->sortByDesc('comments_avg_note'),
     ]);
 });
 Route::get('/produits', [ProductController::class,'index']);
+
 
 Route::get('/produits/{product}', [ProductController::class,'show']);
 
@@ -31,5 +41,42 @@ Route::get('/categorie', [CategoryController::class,'index']);
 
 Route::get('/categorie/{category}', [CategoryController::class,'show']);
 
+Route::get('/contact', [ContactController::class,'create'])->middleware('auth');
+
+Route::post('/contact', [ContactController::class,'store']);
+
+Route::get('/Admin', [AdminController::class, 'index'])->middleware('auth');
+
+Route::get('/Admin/Produit', [AdminProductController::class, 'index'])->middleware('auth');
+
+Route::get('/Admin/Produit/creer', [AdminProductController::class,'create'])->middleware('auth');
+
+Route::post('/Admin/Produit/creer', [AdminProductController::class, 'store'] )->middleware('auth');
+
+Route::get('/Admin/Produit/{produit}', [AdminProductController::class, 'edit'])->middleware('auth');
+
+Route::put('/Admin/Produit/{produit}', [AdminProductController::class, 'update'])->middleware('auth');
+
+Route::DELETE('/Admin/Produit/{produit}', [AdminProductController::class, 'destroy'])->middleware('auth');
+
+Route::get('/Admin/Category', [AdminCategoryController::class, 'index']);
+
+Route::get('/Admin/Category/creer', [AdminCategoryController::class,'create']);
+
+Route::post('/Admin/Category/creer', [AdminCategoryController::class, 'store'] );
+
+Route::get('/Admin/Category/{Category}/modifier', [AdminCategoryController::class, 'edit']);
+
+Route::put('/Admin/Category/{Category}', [AdminCategoryController::class, 'update']);
+
+Route::DELETE('/Admin/Category/{Category}', [AdminCategoryController::class, 'destroy']);
+
+Route::post('commentaire/{product}', [CommentController::class, 'store'] );
+
+Route::get('/panier', [CartController::class, 'index']);
+
+Route::post('/panier/{product}', [CartController::class,'store']);
+Auth::routes();
 
 
+Route::get('/home', [HomeController::class, 'index'])->name('home');

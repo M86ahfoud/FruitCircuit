@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\comment;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    private const CATEGORY_PRODUCT_PAGINATION = 6;
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +20,7 @@ class ProductController extends Controller
        
         return view('produits.index', [
 
-            'produits' => Product::latest()->filter()->simplepaginate(6)->withQueryString(),
+            'produits' => Product::latest()->filter()->paginate(self::CATEGORY_PRODUCT_PAGINATION)->withQueryString(),
             'categories' => Category::all(),
             'lastproduits' => Product::latest('id')->first(),
 
@@ -55,7 +57,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return view ('produits.show', [
-            'product' => $product
+            'product' => $product,
         ]);
     }
 

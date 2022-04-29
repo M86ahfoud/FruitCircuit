@@ -7,17 +7,11 @@
 
         </div>
         <ul class="list-group category_block">
-            @if (isset($categories))
-                @if (count($categories) > 0)
                     @foreach ($categories as $category)
                         <li class="list-group-item">
                             <a href="/categorie/{{ $category->id }}">{{ $category->name }}</a>
                         </li>
                     @endforeach
-                @else
-                @endif
-            @endif
-
         </ul>
     </div>
     <div class="card bg-light mb-3">

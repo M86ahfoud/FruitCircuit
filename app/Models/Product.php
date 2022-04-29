@@ -11,7 +11,7 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nom', 'description', 'prix', 'slug', 'coup_de_coeur', 'image', 'cateory_id', 'promotion'
+        'nom', 'description', 'prix', 'slug', 'coup_de_coeur', 'image', 'category_id', 'user_id', 'promotion'
     ];
 
 
@@ -33,5 +33,10 @@ class Product extends Model
 
     {
         return $this->belongsTo(Category::class); 
+    }
+
+    public function comments() {
+
+        return $this->hasMany(comment::class)->latest();
     }
 }

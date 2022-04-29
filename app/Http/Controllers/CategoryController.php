@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    private const CATEGORY_PRODUCT_PAGINATION = 6;
+
+
     /**
      * Display a listing of the resource.
      *
@@ -50,17 +53,11 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        
-        
-        
         return view('categories.show', [
-
             'category' => $category,
             'lastproduits' => Product::latest('id')->first(),
             'categories'=> Category::all(),
-           'produits'=> Category::latest('id')->paginate(2),
-            
-            
+            'produits'=> $category->products()->latest()->filter()->paginate(self::CATEGORY_PRODUCT_PAGINATION), 
         ]);
     }
 
