@@ -23,7 +23,7 @@ class ProductFactory extends Factory
             'prix' => $this->faker->randomFloat(2, 0, 1000),
             'slug' => $this->faker->slug(1),
             'coup_de_coeur' => $this->faker->boolean(), 
-            'image' => $this->faker->imageUrl(),
+            'image' => $this->faker->ImageUrl(),
             'promotion' =>$this->faker->randomFloat(2, 0, 10,5),
             'category_id' => Category::factory(),
         ];

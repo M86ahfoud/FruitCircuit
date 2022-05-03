@@ -1,8 +1,24 @@
 @extends('layouts.base')
 
 @section('content')
-<div id="animate"><img id="image" src="/images/272527560.jpg" alt="272527560" style="width:200px; height:300px"/></div>
+<!--<div id="animate"><img id="image" src="/images/272527560.jpg" alt="272527560" style="width:200px; height:300px"/></div>-->
 <!--<div id="anime_text">Mon super texte de la mort qui tue</div>-->
+<div class=" animation container mt-3">
+    <div class="position row">
+        <div class="col">
+            <img src="/images/image_fruit.jpg" alt="Card image cap" style="width:300px; height:300px"/>
+
+        </div>
+        <div class="col-3">
+            <h1>Bienvenue au FLASH PROMO</h1>
+        </div>
+        <div class="col-4">
+            <img src="/images/image_fruit2.jpg" alt="Card image cap" style="width:300px; height:300px"/>
+        </div>
+        
+
+    </div>
+</div>
     <div class="container">
         <div class="row">
             

@@ -12,6 +12,7 @@ use App\Http\Controllers\ProductController;
 use App\Models\comment;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\VarDumper\VarDumper;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 
 Route::get('/', function () {
     return view('index', [
@@ -75,7 +78,7 @@ Route::post('commentaire/{product}', [CommentController::class, 'store'] );
 
 Route::get('/panier', [CartController::class, 'index']);
 
-Route::post('/panier/{product}', [CartController::class,'store']);
+Route::post('/panier/{product}', [CartController::class,'store']);   
 Auth::routes();
 
 
