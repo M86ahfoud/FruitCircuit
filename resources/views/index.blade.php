@@ -115,22 +115,22 @@
 
                     <div class="card-body">
                         <div class="row">
-                            @foreach ($parabol as $para)
+                            @foreach ($lastProduits as $lastProduit)
                                 <div class="col-sm">
                                     <div class="card">
-                                        <img class="card-img-top" src="{{ $para->image }}" alt="Card image cap">
+                                        <img class="card-img-top" src="{{ $lastProduit->image }}" alt="Card image cap">
                                         <div class="card-body">
                                             <h4 class="card-title"> <a class="nom" href="Product.html"
                                                     title="View Product">
-                                                    {{ $para->nom }} </a>
+                                                    {{ $lastProduit->nom }} </a>
                                             </h4>
-                                            <p class="card-text"> {{ $para->description }}</p>
+                                            <p class="card-text"> {{ $lastProduit->description }}</p>
                                             <div class="row">
                                                 <div class="col">
-                                                    <p class="btn btn-danger w-100">{{ $para->prix }} </p>
+                                                    <p class="btn btn-danger w-100">{{ $lastProduit->prix }} </p>
                                                 </div>
                                                 <div class="col">
-                                                    <a href="/produits/{{ $produit->id }}"
+                                                    <a href="/produits/{{ $lastProduit->id }}"
                                                         class="btn btn-success w-100">Voir</a>
                                                 </div>
                                             </div>
