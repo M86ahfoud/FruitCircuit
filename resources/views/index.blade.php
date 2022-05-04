@@ -81,21 +81,21 @@
                             Promotion
                         </div>
 
-                        <img class="img-fluid border-0" src="{{ $FavoriProduit->image }}" alt="Card image cap">
+                        <img class="img-fluid border-0" src="{{ $cheapestProduit->image }}" alt="Card image cap">
                         <div class="card-body">
 
                             <h4 class="card-title text-center">
                                 <a class="nom" href="product.html"
-                                    title="View Product">{{ $FavoriProduit->nom }}</a>
+                                    title="View Product">{{ $cheapestProduit->nom }}</a>
                             </h4>
 
-                            <p class="card-text"> {{ $FavoriProduit->description }}</p>
+                            <p class="card-text"> {{ $cheapestProduit->description }}</p>
                             <div class="row">
                                 <div class="col">
-                                    <p class="btn btn-danger w-100">{{ $FavoriProduit->prix }}</p>
+                                    <p class="btn btn-danger w-100">{{ $cheapestProduit->prix }}</p>
                                 </div>
                                 <div class="col">
-                                    <a href="/produits/{{ $FavoriProduit->id }}" class="btn btn-success w-100">Voir</a>
+                                    <a href="/produits/{{ $cheapestProduit->id }}" class="btn btn-success w-100">Voir</a>
                                 </div>
                             </div>
 
@@ -161,7 +161,7 @@
                                                 alt="{{ $product->nom }}">
                                             <div class="card-body">
                                                 <h4 class="card-title"><a class="nom"
-                                                        href="/produits/{{ $product->id }}-{{ $product->slug }}"
+                                                        href="/produits/{{ $product->id }}"
                                                         title="View Product">{{ $product->nom }}</a></h4>
                                                 <p class="card-text">{{ $product->description }}</p>
                                                 <div class="row">

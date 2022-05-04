@@ -32,10 +32,9 @@ use App\Models\Product\DB;
 Route::get('/', function () {
     return view('index', [
         "produits" => Product::inRandomOrder()->filter()->limit(3)->get(),
-       // "FavriProduit" => Product::where('coup_de_coeur', 1)->inRandomOrder()->filter()->first(),
-       "FavoriProduit" => Product::where('prix', Product::min('prix'))->filter()->first(),
+       "cheapestProduit" => Product::where('prix', Product::min('prix'))->filter()->first(),
         "parabol" => Product::latest()->filter()->limit(4)->get(),
-        "bestProducts" => Product::withAvg('comments', 'note')->limit(4)->get()->sortByDesc('comments_avg_note'),
+        "bestProducts" => Product::withCount('comments')->orderBy('comments_count', 'desc')->limit(4)->get(),
     ]);
 });
 Route::get('/produits', [ProductController::class,'index']);
@@ -77,7 +76,7 @@ Route::put('/Admin/Category/{Category}', [AdminCategoryController::class, 'updat
 
 Route::DELETE('/Admin/Category/{Category}', [AdminCategoryController::class, 'destroy']);
 
-Route::post('commentaire/{product}', [CommentController::class, 'store'] );
+Route::post('commentaire/{product}', [CommentController::class, 'store'] )->middleware('auth');
 
 Route::get('/panier', [CartController::class, 'index']);
 

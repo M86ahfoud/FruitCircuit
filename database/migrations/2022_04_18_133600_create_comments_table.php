@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('message');
             $table->integer('note');
             $table->unsignedInteger('product_id')->constrained()->cascadeOnDelete();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
