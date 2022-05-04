@@ -1,10 +1,16 @@
 <div class="col-12 col-md-3">
     <div class="card bg-light mb-3">
-        <div class="card-header bg-primary text-white text-uppercase">
-            <i class="fa fa-list">
-
-            </i>
-
+        <div class="card-header bg-primary text-white text-uppercase ">
+            Filter
+        </div>
+        <ul class="list-group category_block">
+                   <li class="list-group-item"><a href="/Orderasc">Prix ascendant</a></li>
+                   <li class="list-group-item"><a href="/Orderdesc">Prix descendant</a></li>
+        </ul>
+    </div>
+    <div class="card bg-light mb-3">
+        <div class="card-header bg-primary text-white text-uppercase ">          
+            Categories
         </div>
         <ul class="list-group category_block">
                     @foreach ($categories as $category)

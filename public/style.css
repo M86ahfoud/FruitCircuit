@@ -48,7 +48,7 @@ footer {
     color: rgba(0, 0, 0, 0.9);
 
 }
-/*
+
 #animate {
     transition: .5s;
     animation: slideDown 2s infinite reverse;
@@ -70,4 +70,27 @@ footer {
         opacity: 0;
     }
 }
-*/
+
+.entouré {
+    background-color: aquamarine;
+    border-radius: 8px;
+}
+
+.titre {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 25px;
+    height: 100px;
+    align-items: center;
+   
+    
+}
+
+.nom {
+    text-decoration: none;
+}
+a {
+    text-decoration: none;
+}

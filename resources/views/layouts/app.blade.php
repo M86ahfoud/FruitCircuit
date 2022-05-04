@@ -46,6 +46,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/contact">Contact</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home">Home</a>
+                        </li>
                     </ul>
                     <form methode="GET" action="#" class="d-flex">
                         <input class="form-control me-2 " name="search" placeholder="Search" aria-label="Search" value="{{request('search')}}">
@@ -105,7 +108,7 @@
     </div>
         <footer >
             <div class="container">
-               <!-- <div class="row">
+               <div class="row">
                     <div class="col-md-3 col-4 col-xl-3">
                         <h5>Contact</h5>
                         <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
@@ -152,7 +155,7 @@
                     </div>
                 </div>
                 <p class="text-center">Copyright &copy; {{ date('Y') }} - {{ config('app.name') }}</p>
-            </div>-->
+            </div>
         </footer>
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

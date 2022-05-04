@@ -8,11 +8,13 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Models\comment;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\VarDumper\VarDumper;
+use App\Models\Product\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +32,8 @@ use Symfony\Component\VarDumper\VarDumper;
 Route::get('/', function () {
     return view('index', [
         "produits" => Product::inRandomOrder()->filter()->limit(3)->get(),
-        "FavriProduit" => Product::where('coup_de_coeur', 1)->inRandomOrder()->filter()->first(),
+       // "FavriProduit" => Product::where('coup_de_coeur', 1)->inRandomOrder()->filter()->first(),
+       "FavoriProduit" => Product::where('prix', Product::min('prix'))->filter()->first(),
         "parabol" => Product::latest()->filter()->limit(4)->get(),
         "bestProducts" => Product::withAvg('comments', 'note')->limit(4)->get()->sortByDesc('comments_avg_note'),
     ]);
@@ -78,7 +81,12 @@ Route::post('commentaire/{product}', [CommentController::class, 'store'] );
 
 Route::get('/panier', [CartController::class, 'index']);
 
-Route::post('/panier/{product}', [CartController::class,'store']);   
+Route::post('/panier/{product}', [CartController::class,'store']); 
+
+Route::get('/Orderasc', [OrderController::class, 'asc']);
+
+Route::get('/Orderdesc', [OrderController::class, 'desc']);
+
 Auth::routes();
 
 
