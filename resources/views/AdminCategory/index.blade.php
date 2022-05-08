@@ -6,7 +6,10 @@
         <div class="row">
             @include('layouts.sidebar')
             <div class="col">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Catégories</h1>
                 <a href="/Admin/Category/creer" class="btn btn-primary mb-5"> Ajouter une categorie</a>
+                </div>
                 <table class=" table">
                     <thead>
                         <tr>

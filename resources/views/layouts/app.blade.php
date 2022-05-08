@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,17 +16,8 @@
         
     </style>
 </head>
-
 <body>
-    <div id="app">
-         <!--<h1>Acccueil</h1>
-    <div>
-        <p><a href="/">Accueil</a></p>
-        <p><a href="/produits">Produits</a></p>
-        <p><a href="/produits/12-iphone-xs/{id}">show produit</a></p>
-        <p><a href="/categorie/12-smartphone/{category}">show category</a></p>
-        <a href="/contact">Contact</a>
-    </div>-->
+    <div id="app">      
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name') }}</a>
@@ -130,7 +120,6 @@
                             <li><a href="#">CGV</a></li>
                         </ul>
                     </div>
-                    
                     <div class="col-md-3 col-lg-2 col-xl-2 mx-auto">
                         <h5>Mon compte</h5>
                         <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
@@ -156,8 +145,7 @@
                 </div>
                 <p class="text-center">Copyright &copy; {{ date('Y') }} - {{ config('app.name') }}</p>
             </div>
-        </footer>
-    
+        </footer>  
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <!--  <script src="{{ asset('js/app.js') }}" defer></script> -->

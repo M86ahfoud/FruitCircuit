@@ -33,7 +33,7 @@
                                     <td class="text-right">
                                         <form action="/panier/{{ $id }}" method="POST">
                                             @csrf @method('delete')
-                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash">supprimer</i></button>
                                         </form>
                                     </td>
                                 </tr>

@@ -1,12 +1,10 @@
 @extends('layouts.base')
-
 @section('content')
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading"> Produit</h1>
             <p class="lead text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae,
-                veniam, eius aliquam quidem rem sunt nam quaerat facilis ex error placeat ipsa illo sed inventore
-                soluta ipsum cumque atque ea?</p>
+                veniam, eius aliquam quidem rem sunt nam quaerat facilis ex error placeat ?</p>
         </div>
     </section>
     <div class="row">
@@ -35,8 +33,6 @@
                 @endforeach
             </div>
         </div>
-
     </div>
-
     {!! $produits->links() !!}
 @endsection

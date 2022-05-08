@@ -6,7 +6,10 @@
         <div class="row">
             @include('layouts.sidebar')
             <div class="col">
-                <a href="/Admin/Produit/creer" class="btn btn-primary mb-5"> Ajouter un produit</a>
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Produits</h1>
+                    <a href="/Admin/Produit/creer" class="btn btn-primary mb-5"> Ajouter un produit</a>
+                </div>
                 <table class=" table">
                     <thead>
                         <tr>

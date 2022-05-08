@@ -34,11 +34,10 @@ Route::get('/', function () {
         "produits" => Product::inRandomOrder()->filter()->limit(3)->get(),
        "cheapestProduit" => Product::where('prix', Product::min('prix'))->filter()->first(),
         "lastProduits" => Product::latest()->filter()->limit(4)->get(),
-        "bestProducts" => Product::withCount('comments')->orderBy('comments_count', 'desc')->limit(4)->get(),
+        "bestProducts" => Product::withCount('comments')->orderBy('comments_count', 'asc')->limit(4)->get(),
     ]);
 });
 Route::get('/produits', [ProductController::class,'index']);
-
 
 Route::get('/produits/{product}', [ProductController::class,'show']);
 
@@ -78,9 +77,9 @@ Route::DELETE('/Admin/Category/{Category}', [AdminCategoryController::class, 'de
 
 Route::post('commentaire/{product}', [CommentController::class, 'store'] )->middleware('auth');
 
-Route::get('/panier', [CartController::class, 'index']);
+Route::get('/panier', [CartController::class, 'index'])->middleware('auth');
 
-Route::post('/panier/{product}', [CartController::class,'store']); 
+Route::post('/panier/{product}', [CartController::class,'store'])->middleware('auth'); 
 
 Route::get('/Orderasc', [OrderController::class, 'asc']);
 
@@ -90,3 +89,9 @@ Auth::routes();
 
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::get('/Admin', function () {
+      return view('Admin.index');
+    })->name('index');
+  });

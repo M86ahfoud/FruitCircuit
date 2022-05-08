@@ -17,9 +17,9 @@
             </div>
         </div>
         <div class="card shadow">
-           <p class="price">{{ $product->promotion }}</p>
+           <p class="price">{{ $product->promotion() }}</p>
                     @if ($product->promotion)
-                    <p class="price_discounted">{{ $product->price }}</p>
+                    <p class="price_discounted">{{ $product->prix() }}</p>
                     @endif
             <form method="post" action="/panier/{{$product->id}}">
                 @csrf

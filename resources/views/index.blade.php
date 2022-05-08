@@ -1,30 +1,8 @@
 @extends('layouts.base')
 
 @section('content')
-    <!--<div id="animate" class="continer">
-            <div class="row">
-                <div class="col">
-
-                    <img id="image" src="/images/image_fruit.jpg" alt="272527560" style="width:200px; height:300px" />
-
-                </div>
-                <div class="col-3">
-
-                    <img id="image" src="/images/image_fruit.jpg" alt="272527560" style="width:200px; height:300px" />
-
-                </div>
-                <div class="col-4">
-
-                    <img id="image" src="/images/image_fruit.jpg" alt="272527560" style="width:200px; height:300px" />
-
-                </div>
-
-            </div>
-
-        </div>-->
-
     <div class="container mt-3 animation">
-        <div class="position row">
+        <div  class="position row">
             <div class="col">
                 <img src="/images/image_fruit.jpg" alt="Card image cap" style="width:300px; height:300px" />
 
@@ -35,13 +13,10 @@
             <div class="col-4">
                 <img src="/images/image_fruit2.jpg" alt="Card image cap" style="width:300px; height:300px" />
             </div>
-
-
         </div>
     </div>
     <div class="container">
         <div class="row">
-
             <div class="col">
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
@@ -102,7 +77,6 @@
                         </div>
                     </div>
                 </div>
-            
         </div>
     </div>
     <div class="container mt-3">

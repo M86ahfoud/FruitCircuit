@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
 class AdminProductController extends Controller
 {
     /**
@@ -21,7 +18,6 @@ class AdminProductController extends Controller
             'i' => '1',
         ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -33,32 +29,26 @@ class AdminProductController extends Controller
             'categories' => Category::all()->sortBy('name'),
         ]);
     }
-
     /**
      * Store a newly created resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         // valider le formulaire 
-
         request()->validate([
             'nom' => 'required|min:3',
             'description' => 'required|min:10',
-            // 'prix' => 'required|regex:/(^99|[1-9][0-9][0-9]|1000)+$/i',
+             'prix' => 'required|numeric|between:99,1000',
             'slug' => 'unique:products,slug',
             'image' => 'required',
             'category' => 'exists:categories,id',
         ]);
-
         $image = request('image');
         $new_name = rand().'.'.$image->getClientOriginalExtension();
         $image->move(public_path('images'), $new_name);
-
         //ajouter un produit dans la BDD;
-
          Product::create([
             'nom' => request ('nom'),
             'description' => request ('description'),
@@ -68,23 +58,9 @@ class AdminProductController extends Controller
             'promotion' => request ('promotion'), 
             'category_id' => request('category'),
         ]);
-
         //'image' =>'/storage/'.request ('image')->store('images', 'public'),
-
         return redirect('/Admin/Produit/creer')->with('status', 'Le produit a bien été ajouté.');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -100,7 +76,6 @@ class AdminProductController extends Controller
 
         ]);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -112,17 +87,12 @@ class AdminProductController extends Controller
     {
         $image_name = request('hidden_image');
         $image = request('image');
-       
-
         // modifier un produit
         if($image != '') {
-
             request()->validate([
-                
                 'nom' => 'required|min:3',
                 'description' => 'required|min:10',
-              // 'prix' => 'required|regex:/(^99|[1-9][0-9][0-9]|1000)+$/i',
-              
+                'prix' => 'required|numeric|between:99,1000',
                 'image' => 'image|min:2048',
                 'category' => 'exists:categories,id',
             ]);
@@ -130,15 +100,13 @@ class AdminProductController extends Controller
             $image->move(public_path('images'), $image_name);
         }else {
             request()->validate([
-                
                 'nom' => 'required|min:3',
                 'description' => 'required|min:10',
-              // 'prix' => 'required|regex:/(^99|[1-9][0-9][0-9]|1000)+$/i',
+                'prix' => 'required|numeric|between:99,1000',
                 'category' => 'exists:categories,id',
             ]);
         }
         //modifierun produit dans la BDD;
-       
         $produit->update([
             'nom' => request ('nom'),
             'description' => request ('description'),
@@ -147,11 +115,9 @@ class AdminProductController extends Controller
             'image' => $image_name,
             'promotion' => request ('promotion'), 
             'category_id' => request('category'),
-        ]);
-       
+        ]); 
         return redirect('Admin/Produit')->with('status', 'Le produit'.$produit->nom.'a bien été modifié.');
     }
-
     /**
      * Remove the specified resource from storage.
      *

@@ -26,7 +26,7 @@ class CartController extends Controller
      */
     public function store(Product $product)
     {
-        $cart = session ('cart', []); 
+        $cart = session('cart', []); 
 
         $cart['items'][$product->id] = [
             'name' => $product->nom,
