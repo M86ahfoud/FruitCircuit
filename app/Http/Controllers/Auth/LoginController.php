@@ -35,7 +35,7 @@ class LoginController extends Controller
 
         } else {
 
-            return 'home';  // member dashboard path
+            return '';  // member dashboard path
         }
     }
 

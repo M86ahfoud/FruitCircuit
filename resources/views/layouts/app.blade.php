@@ -41,13 +41,14 @@
                         </li>
                     </ul>
                     <form methode="GET" action="#" class="d-flex">
+                        @csrf
                         <input class="form-control me-2 " name="search" placeholder="Search" aria-label="Search" value="{{request('search')}}">
                         <button class="btn btn-outline-success" type="submit">Search</button>
-                        <a class="btn btn-success btn-sm ms-3 d-inline-flex align-items-center" href="/panier">
-                            <i class="fa fa-shopping-cart me-2"></i> Panier
-                            <span class="badge badge-light">{{ count(session('cart', [])) }}</span>
-                        </a>
                     </form>
+                    <a class="btn btn-success btn-sm ms-3 d-inline-flex align-items-center" href="/panier">
+                        <i class="fa fa-shopping-cart me-2"></i> Panier
+                        <span class="badge badge-light">{{ count(session('cart', [])) }}</span>
+                    </a>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
