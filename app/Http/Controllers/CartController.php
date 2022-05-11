@@ -42,7 +42,7 @@ class CartController extends Controller
             $cart ['total'] += $item['price'] * $item ['quantity'];
         } 
 
-        session(['cart => $cart']);
+        session(['cart' => $cart]);
 
         return redirect ('/panier');
     }
@@ -87,8 +87,19 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($i)
+    public function destroy(Product $product)
     {
-        //
+        $cart = session('cart', []);
+        unset($cart['items'][$product->id]);
+
+        $cart['total'] = 0;
+        $cart['delivry'] = 6.90;
+        foreach ($cart['items'] as $item) {
+            $cart['total'] += $item['price'] * $item['quantity'];
+        }
+
+        session (['cart' => $cart]);
+
+        return redirect('/panier');
     }
 }

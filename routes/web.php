@@ -31,7 +31,7 @@ Route::get('/', function () {
         "produits" => Product::inRandomOrder()->filter()->limit(3)->get(),
        "cheapestProduit" => Product::where('prix', Product::min('prix'))->filter()->first(),
         "lastProduits" => Product::latest()->filter()->limit(4)->get(),
-        "bestProducts" => Product::withCount('comments')->orderBy('comments_count', 'asc')->filter()->limit(4)->get(),
+        "bestProducts" => Product::withCount('comments')->orderBy('comments_count', 'asc')->limit(4)->filter()->get(),
     ]);
 });
 Route::get('/produits', [ProductController::class,'index']);
@@ -78,12 +78,13 @@ Route::get('/panier', [CartController::class, 'index'])->middleware('auth');
 
 Route::post('/panier/{product}', [CartController::class,'store'])->middleware('auth'); 
 
+Route::delete('/panier/{product}', [CartController::class, 'destroy']);
+
 Route::get('/Orderasc', [OrderController::class, 'asc']);
 
 Route::get('/Orderdesc', [OrderController::class, 'desc']);
 
 Auth::routes();
-
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
