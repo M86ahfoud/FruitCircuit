@@ -28,8 +28,8 @@ use App\Models\Product\DB;
 */
 Route::get('/', function () {
     return view('index', [
-        "produits" => Product::inRandomOrder()->filter()->limit(3)->get(),
-       "cheapestProduit" => Product::where('prix', Product::min('prix'))->filter()->first(),
+      "produits" => Product::inRandomOrder()->filter()->limit(3)->get(),
+      "cheapestProduit" => Product::where('prix', Product::min('prix'))->first(),
         "lastProduits" => Product::latest()->filter()->limit(4)->get(),
         "bestProducts" => Product::withCount('comments')->orderBy('comments_count', 'asc')->limit(4)->filter()->get(),
     ]);

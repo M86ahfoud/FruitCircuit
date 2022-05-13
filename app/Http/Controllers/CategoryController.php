@@ -20,7 +20,7 @@ class CategoryController extends Controller
     {
         return view('categories.index', [
 
-            'categories'=> Category::latest()->get(),
+            'categories'=> Category::latest()->filter()->get(),
         ]);
     }
 
