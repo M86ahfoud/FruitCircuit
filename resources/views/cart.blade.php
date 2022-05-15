@@ -44,7 +44,7 @@
                                     {{ number_format(session('cart', [])['total'] ?? 0, 2, ',', '') }} €</td>
                             </tr>
                             <tr>
-                                <td>Frais de port</td>
+                                <td>Frais de livraison</td>
                                 <td class="text-right">5,90 €</td>
                             </tr>
                             <tr>

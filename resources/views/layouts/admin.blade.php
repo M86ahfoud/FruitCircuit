@@ -43,20 +43,25 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Recherche" aria-label="Recherche">
+        <form methode="GET" action="#" class="d-flex">
+            @csrf
+            <input class="form-control form-control-dark w-90" type="text" name="search" placeholder="Search"
+                aria-label="Recherche" value="{{ request('search') }}">
+            <button class="btn btn-outline-success" type="submit">Recherche</button>
+        </form>
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="{{ route('logout') }}"  onclick="event.preventDefault(); 
-                document.getElementById('logout-form').submit();" >{{ __('Logout') }}</a>
+                <a class="nav-link px-3" href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">{{ __('Déconnexion') }}</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
             </div>
         </div>
     </header>
-    
+
     @yield('content')
-    
+
     <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>

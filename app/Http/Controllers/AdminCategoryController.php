@@ -15,7 +15,7 @@ class AdminCategoryController extends Controller
     public function index()
     {
         return view('AdminCategory.index', [
-            'categories' => Category::all(),
+            'categories' => Category::latest()->filter()->get()->all(),
             'i' => '1'
         ]);
     }

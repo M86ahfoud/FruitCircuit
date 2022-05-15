@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->text('message');
             $table->integer('note');
-            $table->unsignedInteger('product_id')->constrained()->cascadeOnDelete();
-            $table->unsignedBigInteger('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('product_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

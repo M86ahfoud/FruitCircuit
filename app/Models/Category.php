@@ -15,15 +15,11 @@ class Category extends Model
     ];
     
     public function scopeFilter($query)
-
     {
         if(request("search")) {
 
             $query 
-            ->where('description', 'like', '%' . request("search") . '%')
-
-            ->orwhere('nom', 'like', '%' . request("search") . '%')
-            ->orwhere('prix', 'like', '%' . request("search") . '%')->get(); 
+            ->where('name', 'like', '%' . request("search") . '%')->get(); 
         }
     }
    

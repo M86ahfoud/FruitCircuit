@@ -10,11 +10,12 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
-use App\Models\comment;
+use App\Models\Comment;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\VarDumper\VarDumper;
 use App\Models\Product\DB;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +31,9 @@ Route::get('/', function () {
     return view('index', [
       "produits" => Product::inRandomOrder()->filter()->limit(3)->get(),
       "cheapestProduit" => Product::where('prix', Product::min('prix'))->first(),
-        "lastProduits" => Product::latest()->filter()->limit(4)->get(),
-        "bestProducts" => Product::withCount('comments')->orderBy('comments_count', 'asc')->limit(4)->filter()->get(),
+      "lastProduits" => Product::latest()->filter()->limit(4)->get(),
+      //"bestProducts" => Product::whereHas('comments')->withCount('comments')->orderBy('comments_count', 'asc')->take(4)->filter()->get(),
+      'bestProducts' => Product::whereHas('comments')->withAvg('comments', 'note')->take(4)->get()->sortByDesc('comments_avg_note'),
     ]);
 });
 Route::get('/produits', [ProductController::class,'index']);

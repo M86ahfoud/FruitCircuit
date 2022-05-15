@@ -13,6 +13,7 @@
             <div class="col-4">
                 <img src="/images/image_fruit2.jpg" alt="Card image cap" style="width:300px; height:300px" />
             </div>
+            
         </div>
     </div>
     <div class="container">
@@ -53,7 +54,7 @@
                 <div class="col-12 col-md-3">
                     <div class="card h-100">
                         <div class="card-header bg-success text-white text-uppercase">                        
-                            Promotion
+                            Meilleur prix
                         </div>
 
                         <img class="img-fluid border-0" src="{{ $cheapestProduit->image }}" alt="Card image cap">
@@ -123,7 +124,7 @@
             <div class="row">
                 <div class="col-sm">
                     <div class="titre">
-                        Les produits les mieux commenté
+                        Les derniers produits commentés
                     </div>
                     <div class="entouré">
                         <div class="card-body">

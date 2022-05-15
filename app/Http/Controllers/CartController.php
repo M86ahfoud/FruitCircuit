@@ -27,6 +27,7 @@ class CartController extends Controller
     public function store(Product $product)
     {
         $cart = session('cart', []); 
+        
 
         $cart['items'][$product->id] = [
             'name' => $product->nom,
@@ -43,6 +44,7 @@ class CartController extends Controller
         } 
 
         session(['cart' => $cart]);
+
 
         return redirect ('/panier');
     }

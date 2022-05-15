@@ -15,7 +15,7 @@
                 @foreach ($produits as $produit)
                     <div class="card">
                         <a class="card-img-top">
-                            <img src="{{ $produit->image }}" class="img-fluid" alt=" Card image cap">
+                            <img src="{{ $produit->image }}" class="img-fluid" alt="Card image cap">
                         </a>
                         <h5 class="card-title"><a class="card-titl" href="produit.html"> {{ $produit->nom }} </a>
                         </h5>

@@ -14,7 +14,7 @@ class AdminProductController extends Controller
     public function index()
     {
         return view('AdminProduit.index', [
-            'produits' => Product::all(),
+            'produits' => Product::latest()->filter()->get()->all(),
             'i' => '1',
         ]);
     }
@@ -34,13 +34,13 @@ class AdminProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         // valider le formulaire 
         request()->validate([
             'nom' => 'required|min:3',
             'description' => 'required|min:10',
-             'prix' => 'required|numeric|between:99,1000',
+             'prix' => 'required|numeric|between:2,10',
             'slug' => 'unique:products,slug',
             'image' => 'required',
             'category' => 'exists:categories,id',
@@ -83,7 +83,7 @@ class AdminProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $produit)
+    public function update(Product $produit)
     {
         $image_name = request('hidden_image');
         $image = request('image');
@@ -92,8 +92,8 @@ class AdminProductController extends Controller
             request()->validate([
                 'nom' => 'required|min:3',
                 'description' => 'required|min:10',
-                'prix' => 'required|numeric|between:99,1000',
-                'image' => 'image|min:2048',
+                'prix' => 'required|numeric|between:2,10',
+                //'image' => 'image|min:2048',
                 'category' => 'exists:categories,id',
             ]);
             $image_name = rand().'.'.$image->getClientOriginalExtension();
@@ -102,7 +102,7 @@ class AdminProductController extends Controller
             request()->validate([
                 'nom' => 'required|min:3',
                 'description' => 'required|min:10',
-                'prix' => 'required|numeric|between:99,1000',
+                'prix' => 'required|numeric|between:2,10',
                 'category' => 'exists:categories,id',
             ]);
         }
@@ -112,7 +112,7 @@ class AdminProductController extends Controller
             'description' => request ('description'),
             'prix' => request ('prix'),
             'slug' => Str::snake(request('nom')),
-            'image' => $image_name,
+            'image' => '/images/'.$image_name,
             'promotion' => request ('promotion'), 
             'category_id' => request('category'),
         ]); 
